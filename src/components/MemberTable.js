@@ -38,7 +38,7 @@ function MemberTable({ data: tableData, onSelectionChange }) {
             }
           >
             <td>{memberData.member}</td>
-            <td>{memberData.played}</td>
+            <td>{memberData.totalPlayed}</td>
           </tr>
         ))}
       </tbody>
