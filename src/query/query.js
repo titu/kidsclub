@@ -3,27 +3,23 @@ const memberEndpoint = "members";
 const gamesEndpoint = "games";
 const memberGamesEndpoint = "member_games";
 
-const getMembers = async () => {
-  const membersResponse = await fetch(`${apiServer}/${memberEndpoint}`);
-  const members = await membersResponse.json();
+const fetchData = async (endPoint) => {
+  const response = await fetch(`${apiServer}/${endPoint}`);
+  const data = await response.json();
 
-  return members;
+  return data;
+};
+
+const getMembers = async () => {
+  return fetchData(memberEndpoint);
 };
 
 const getGames = async () => {
-  const memberGamesResponse = await fetch(`${apiServer}/${gamesEndpoint}`);
-  const games = await memberGamesResponse.json();
-
-  return games;
+  return fetchData(gamesEndpoint);
 };
 
 const getMemberGames = async () => {
-  const memberGamesResponse = await fetch(
-    `${apiServer}/${memberGamesEndpoint}`
-  );
-  const memberGames = await memberGamesResponse.json();
-
-  return memberGames;
+  return fetchData(memberGamesEndpoint);
 };
 
 const getTableData = (members, memberGames) => {
@@ -48,7 +44,9 @@ const getMemberGameSummary = (member, games, memberGames) => {
     (mGame) => mGame.member === member
   );
   const data = games.map((game) => {
-    const gameData = membersGameList.filter((mGame) => mGame.game === game.name);
+    const gameData = membersGameList.filter(
+      (mGame) => mGame.game === game.name
+    );
     return [game.name, gameData.length];
   });
 
