@@ -83,7 +83,7 @@ function App() {
           </Alert>
         )}
         <Row>
-          <Col className="col-12 col-sm-6">
+          <Col className="col-12 col-sm-6 my-4">
             <MemberTable
               data={tableData}
               onSelectionChange={onSelectionChange}
