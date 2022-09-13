@@ -1,0 +1,10 @@
+@import "bootstrap/scss/bootstrap";
+
+.active-table-row {
+    background-color: #2BA79C;
+}
+.table-row {
+    &:hover {
+        cursor: pointer;
+    }
+}
